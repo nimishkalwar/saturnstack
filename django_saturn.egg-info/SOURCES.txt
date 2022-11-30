@@ -18,5 +18,17 @@ saturnstack/views.py
 saturnstack/api/__init__.py
 saturnstack/api/serializers.py
 saturnstack/api/views.py
+saturnstack/core/__init__.py
+saturnstack/core/models.py
+saturnstack/core/api/__init__.py
+saturnstack/core/api/jwt.py
+saturnstack/core/api/permissions.py
+saturnstack/encrypted_model_fields/__init__.py
+saturnstack/encrypted_model_fields/fields.py
+saturnstack/encrypted_model_fields/settings.py
+saturnstack/encrypted_model_fields/tests.py
+saturnstack/encrypted_model_fields/management/__init__.py
+saturnstack/encrypted_model_fields/management/commands/__init__.py
+saturnstack/encrypted_model_fields/management/commands/generate_encryption_key.py
 saturnstack/migrations/0001_initial.py
 saturnstack/migrations/__init__.py

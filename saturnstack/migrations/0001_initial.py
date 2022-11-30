@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.utils.timezone
-import encrypted_model_fields.fields
+from saturnstack import encrypted_model_fields
 
 
 class Migration(migrations.Migration):

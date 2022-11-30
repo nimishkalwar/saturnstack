@@ -5,7 +5,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin, UserManager
 from django.contrib.auth.validators import UnicodeUsernameValidator
 
-from core.models import AbstractBaseModel
+# from core.models import AbstractBaseModel
 import datetime
 from django.utils import timezone
 from django.db.models import Q
@@ -161,7 +161,7 @@ class ConnectionCreateModel(models.Model):
     FriendReferral = models.CharField(max_length=7)
 
 # subsciption model
-from encrypted_model_fields.fields import EncryptedCharField
+from saturnstack.encrypted_model_fields import fields 
 
 class SubscribedMessage(models.Model):
     user = models.CharField(max_length=150)
@@ -170,8 +170,8 @@ class SubscribedMessage(models.Model):
     body = models.CharField(max_length=2000)
     SaturnTileRef = models.CharField(max_length=150)
     author = models.CharField(max_length=150)
-    tileusername = EncryptedCharField(max_length=50, default="Username")
-    tilepassword = EncryptedCharField(max_length=50, default="Username")
+    tileusername = fields.EncryptedCharField(max_length=50, default="Username")
+    tilepassword = fields.EncryptedCharField(max_length=50, default="Username")
     # tileusername = models.EncryptedCharField(max_length=50, default="Username")
     # tilepassword = models.EncryptedCharField(max_length=50, default="Password")
     def save(self, *args, **kwargs):

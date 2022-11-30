@@ -465,17 +465,15 @@ def SaturnConnectionCreate(request):
 
         #first-degree connections
         
-        UserReferral.objects.create(main_user=friend[0],first_degree_users=creator[0])
         UserReferral.objects.create(main_user=creator[0],first_degree_users=friend[0])
+        UserReferral.objects.create(main_user=friend[0],first_degree_users=creator[0])
 
         #second-degree connections
         second_degree_from_referred = UserReferral.objects.filter(main_user=creator[0]).values('first_degree_users').distinct()
         for u1 in second_degree_from_referred:
             if friend[0] !=u1['first_degree_users']:
-                if UserReferral.objects.get(Q(main_user=friend[0]) & Q(first_degree_users=u1['first_degree_users']))=='': 
-                    UserReferral1.objects.create(main_user=friend[0],second_degree_users = u1['first_degree_users'])
-                if UserReferral.objects.get(Q(main_user=u1['first_degree_users']) & Q(first_degree_users=friend[0]))=='':
-                    UserReferral1.objects.create(main_user=u1['first_degree_users'],second_degree_users = friend[0])
+                UserReferral1.objects.create(main_user=friend[0],second_degree_users = u1['first_degree_users'])
+                UserReferral1.objects.create(main_user=u1['first_degree_users'],second_degree_users = friend[0])
         
         # #third-degree connections
         # third_degree_from_referred = UserReferral1.objects.filter(main_user=friend[0]).values('second_degree_users').distinct()

@@ -9,6 +9,10 @@ Detailed documentation is in the "docs" directory.
 
 Quick start
 -----------
+# to install saturnstack 'pip install git+https://github.com/nimishkalwar/saturnstack.git'
+
+# to uninstall saturnstack -> 'python -m pip uninstall django-saturn'  
+
 
 1. Add "polls" to your INSTALLED_APPS setting like this::
 
@@ -21,8 +25,38 @@ Quick start
 
     path('api/saturnstack/',include('saturnstack.urls')),
 
-3. Run ``python manage.py migrate`` to create the saturnstack models.
+3. Add -> FIELD_ENCRYPTION_KEY='9bt8394NBTGFdGEpEZyJ2vgqDfHEVJOBM1xQAh5Q2Mk=' in settings.py
 
-4. Start the development server and visit http://127.0.0.1:8000/
+4. ADD below code in __init__.py of django-project.
+        import pymysql
+        pymysql.install_as_MySQLdb()
 
-5. Visit http://127.0.0.1:8000/api/saturnstack/ to run the api views.
+5. Replace this 'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, "db.sqlite3")
+         }
+    
+    by this in settings.py DATABASES
+
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django-schema',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+
+    }
+
+6. connect to database using mysql-workbench using credentials defined in default and create schema named 'django-schema'
+
+7. create superuser which will help in authentications while using postman to call api's.
+
+8. Run 'python manage.py makemigrations'
+
+9. Run ``python manage.py migrate`` to create the saturnstack models.
+
+
+10. Start the development server and visit http://127.0.0.1:8000/
+
+11. Visit http://127.0.0.1:8000/api/saturnstack/ to run the api views.
