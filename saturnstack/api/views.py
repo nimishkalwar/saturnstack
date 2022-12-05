@@ -41,15 +41,6 @@ import json
 # stripe.api_key='sk_test_51JjToLEis9n0Eev0DTzbIHbSxW5PG5fvezMPyNC1BZrC0ZzeY633UGC6mh5LHbQC6bJxLc6AYBZKKumFWwvKsleT00AA50Q7Ot'
 # stripe.api_key=os.environ.get('STRIPE.API_KEY')
 
-client = gocardless_pro.Client(
-    # We recommend storing your access token in an
-    # environment variable for security
-    # access_token=os.environ['GC_ACCESS_TOKEN'],
-    access_token='sandbox_D2HTTl8B4ou4wgQQRzVtJJTim7YaVSDE0MiPgK_r',
-    # Change this to 'live' when you are ready to go live.
-    environment='sandbox'
-)
-
 
 
 @login_required()
